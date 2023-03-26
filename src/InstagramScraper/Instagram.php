@@ -992,11 +992,16 @@ class Instagram
         if (!isset($mediaArray['graphql']['shortcode_media']) && !isset($mediaArray['items'])) {
             throw new InstagramException('Media with this code does not exist');
         }
+        
+        return current($mediaArray['items']);
+        
+        /*
         if (isset($mediaArray['graphql']['shortcode_media'])) {
             return Media::create($mediaArray['graphql']['shortcode_media']);
         } else {
             return Media::create(current($mediaArray['items']));
         }
+        */
     }
 
     /**
